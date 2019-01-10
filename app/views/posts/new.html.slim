@@ -1,2 +1,14 @@
-h1 Posts#new
-p Find me in app/views/posts/new.html.slim
+h1 記事の作成
+
+.nav.justify-content-end
+  = link_to '一覧', posts_path, class: 'nav-link'
+
+= form_with model: @task, local: true do |f|
+  .form-group
+    =f.label :title
+    =f.text_field :title, class: 'form-control', id: 'post_title'
+
+  .form-group
+    =f.label :post
+    =f.text_area :post, rows: 5, class: 'form-control', id: 'post_post'
+  =f.submit nil, class: 'btn btn-primary'
