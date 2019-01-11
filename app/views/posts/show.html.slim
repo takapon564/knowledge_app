@@ -1,2 +1,17 @@
 h1 Posts#show
-p Find me in app/views/posts/show.html.slim
+
+.nav.justify-content-end
+  = link_to '一覧', posts_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Post.human_attribute_name(:id)
+      td= @post.id
+
+    tr
+      th= Post.human_attribute_name(:title)
+      td= @post.title
+
+    tr
+      th= Post.human_attribute_name(:description)
+      td= markdown(@post.content).html_safe
