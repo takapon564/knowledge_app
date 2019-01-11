@@ -1,2 +1,15 @@
 h1 投稿一覧
 = link_to '投稿', new_post_path, class: 'btn btn-primary'
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Post.human_attribute_name(:title)
+      th= Post.human_attribute_name(:created_at)
+  tbody
+    - @posts.each do |post|
+      tr
+        td = link_to  post.title, post
+        td = post.created_at
+
+      
