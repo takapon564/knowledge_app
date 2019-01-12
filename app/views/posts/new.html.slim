@@ -8,7 +8,22 @@ h1 記事の作成
     =f.label :title
     =f.text_field :title, class: 'form-control', id: 'post_title'
 
-  .form-group
-    =f.label :content
-    =f.text_area :content, rows: 5, class: 'form-control', id: 'post_content'
-  =f.submit nil, class: 'btn btn-primary'
+  .field
+    #editor
+      textarea.form-control debounce="50" name="post[content]" rows="10" v-model="input"
+      div v-html=("input | marked")
+  .actions = f.submit "保存"
+
+
+  javascript:
+    window.onload = function() {
+      new Vue({
+        el: '#editor',
+        data: {
+          input: '#{j @post.content}',
+        },
+        filters: {
+          marked: marked,
+        },
+      });
+    };

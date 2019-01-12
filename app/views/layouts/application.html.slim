@@ -7,9 +7,13 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.0/marked.js"
+    script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js"
+
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand knowlwdge_app
+      .navbar-brand knowledge_app
     .container
       - if flash.notice.present?
         .alert.alert-success = flash.notice
