@@ -15,3 +15,4 @@ table.table.table-hover
     tr
       th= Post.human_attribute_name(:description)
       td= markdown(@post.content).html_safe
+= link_to '編集', edit_post_path, class: 'btn btn-primary mr-3'

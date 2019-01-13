@@ -6,10 +6,12 @@ table.table.table-hover
     tr
       th= Post.human_attribute_name(:title)
       th= Post.human_attribute_name(:created_at)
+      th
   tbody
     - @posts.each do |post|
       tr
         td = link_to  post.title, post
         td = post.created_at
+        td = link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-3'
 
       
