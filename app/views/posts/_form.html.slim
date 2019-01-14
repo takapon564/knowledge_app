@@ -1,0 +1,24 @@
+= form_with model: post, local: true do |f|
+  .form-group
+    =f.label :title
+    =f.text_field :title, class: 'form-control', id: 'post_title'
+
+  .field
+    #editor
+      textarea.form-control debounce="50" name="post[content]" rows="10" v-model="input"
+      div v-html=("input | marked")
+  .actions = f.submit "保存", class: 'btn btn-primary mr-3'
+
+
+  javascript:
+    document.addEventListener('turbolinks:load', function() {
+      new Vue({
+        el: '#editor',
+        data: {
+          input: '#{j @post.content}',
+        },
+        filters: {
+          marked: marked,
+        },
+      });
+    });
