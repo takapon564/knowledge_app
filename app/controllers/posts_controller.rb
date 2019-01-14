@@ -13,9 +13,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.save!
-    redirect_to posts_url, notice: "記事「#{post.title}」の投稿が完了しました。"
+    @post = Post.new(post_params)
+
+    if @post.save
+      redirect_to @post, notice: "記事「#{@post.name}」を投稿しました。"
+    else
+      render :new
+    end
   end
 
   def edit
