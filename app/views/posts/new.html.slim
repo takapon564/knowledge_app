@@ -16,7 +16,7 @@ h1 記事の作成
 
 
   javascript:
-    window.onload = function() {
+    document.addEventListener('turbolinks:load', function() {
       new Vue({
         el: '#editor',
         data: {
@@ -26,4 +26,4 @@ h1 記事の作成
           marked: marked,
         },
       });
-    };
+    });
