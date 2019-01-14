@@ -16,3 +16,4 @@ table.table.table-hover
       th= Post.human_attribute_name(:description)
       td= markdown(@post.content).html_safe
 = link_to '編集', edit_post_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @post, method: :delete, class: 'btn btn-danger', data: { confirm: "タスク「#{@post.title}」を削除しますか？"}
