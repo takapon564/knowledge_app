@@ -27,6 +27,11 @@ class PostsController < ApplicationController
     post.update!(post_params)
     redirect_to posts_url, notice: "記事「#{post.title}]」を更新しました。"
   end
+   def destroy
+     post = Post.find(params[:id])
+     post.destroy
+     redirect_to posts_url, notice: "記事「#{post.title}」を削除しました。"
+   end
 
   private 
 
