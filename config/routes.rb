@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to:  'lists#index'
   resources :lists
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
-  root to: 'posts#index'
   resources :posts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
