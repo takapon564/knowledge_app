@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = current_user.posts
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post =current_user.posts.find(params[:id])
     @post.save!
   end
 
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
 
     if @post.save
       redirect_to @post, notice: "記事「#{@post.name}」を投稿しました。"
@@ -23,11 +23,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
+    post = current_user.posts.find(params[:id])
     post.update!(post_params)
     redirect_to posts_url, notice: "記事「#{post.title}]」を更新しました。"
   end
