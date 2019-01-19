@@ -1,0 +1,16 @@
+
+.nav.justify-content-end
+  = link_to '一覧', lists_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Post.human_attribute_name(:id)
+      td= @post.id
+
+    tr
+      th= Post.human_attribute_name(:title)
+      td= @post.title
+
+    tr
+      th= Post.human_attribute_name(:description)
+      td= markdown(@post.content).html_safe
