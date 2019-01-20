@@ -7,9 +7,11 @@ table.table.table-hover
       th= Post.human_attribute_name(:title)
       th= Post.human_attribute_name(:created_at)
       th= Post.human_attribute_name(:updated_at)
+      th= User.human_attribute_name(:name)
   tbody
     - @posts.each do |post|
       tr
         td = link_to  post.title, list_path(post)
         td = post.created_at
         td = post.updated_at
+        
