@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root to:  'lists#index'
   resources :lists
   get '/login', to: 'sessions#new'
