@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-  resources :users
+  resources :profiles
   root to:  'lists#index'
   resources :lists
   get '/login', to: 'sessions#new'
