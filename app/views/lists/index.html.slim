@@ -14,5 +14,5 @@ table.table.table-hover
         td = link_to  post.title, list_path(post)
         td = post.created_at
         td = post.updated_at
-        td = post.user.name
+        td = link_to post.user.name user_path(@user)
         
