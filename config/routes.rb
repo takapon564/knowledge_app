@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
   resources :users
   root to:  'lists#index'
   resources :lists
