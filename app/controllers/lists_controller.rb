@@ -6,4 +6,8 @@ class ListsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+
+  def show_profile
+    
+  end
 end
