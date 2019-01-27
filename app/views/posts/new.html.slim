@@ -3,4 +3,32 @@ h1 記事の作成
 .nav.justify-content-end
   = link_to '一覧', posts_path, class: 'nav-link'
 
-= render partial: 'form', locals: { post: @post }
+- if @post.errors.present?
+  ul#error_explanation
+    - @post.errors.full_messages.each do |message|
+      li = message
+
+= form_with model: @post, local: true, url: confirm_new_post_path  do |f|
+  .form-group
+    =f.label :title
+    =f.text_field :title, class: 'form-control', id: 'post_title'
+
+  .field
+    #editor
+      textarea.form-control debounce="50" name="post[content]" rows="10" v-model="input"
+      div v-html=("input | marked")
+  .actions = f.submit "確認", class: 'btn btn-primary mr-3'
+
+
+  javascript:
+    document.addEventListener('turbolinks:load', function() {
+      new Vue({
+        el: '#editor',
+        data: {
+          input: '#{j @post.content}',
+        },
+        filters: {
+          marked: marked,
+        },
+      });
+    });
