@@ -5,7 +5,7 @@ table.table.table-hover
   tbody
     tr
       th= Post.human_attribute_name(:id)
-      td= @post.id
+      td= @post.user.id
 
     tr
       th= Post.human_attribute_name(:title)
