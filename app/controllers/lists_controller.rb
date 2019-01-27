@@ -8,6 +8,6 @@ class ListsController < ApplicationController
   end
 
   def show_profile
-    
+    @user = params[:user]
   end
 end
