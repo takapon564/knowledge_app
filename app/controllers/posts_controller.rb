@@ -15,6 +15,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
 
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @post.save
       redirect_to @post, notice: "記事「#{@post.title}」を投稿しました。"
     else
@@ -35,6 +40,11 @@ class PostsController < ApplicationController
      post = Post.find(params[:id])
      post.destroy
      redirect_to posts_url, notice: "記事「#{post.title}」を削除しました。"
+   end
+
+   def confirm_new
+     @post = current_user.posts.new(post_params)
+     render :new unless @post.valid?
    end
 
   private 
