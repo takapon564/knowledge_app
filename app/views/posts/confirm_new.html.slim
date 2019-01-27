@@ -1,0 +1,15 @@
+h1 登録内容の確認
+
+= form_with model: @post, local: true do |f|
+  table.table.table-hover
+    tbody
+      tr
+        th= Post.human_attribute_name(:name)
+        td= @post.title
+        = f.hidden_field :title
+      tr
+        th= Post.human_attribute_name(:description)
+        td= markdown(@post.content).html_safe
+        = f.hidden_field :content
+  = f.submit '戻る', name: 'back', class: 'btn btn-secondary mr-3'
+  = f.submit '登録', class: 'btn btn-primary'
