@@ -13,6 +13,6 @@ table.table.table-hover
       tr
         td = link_to  post.title, list_path(post)
         td = link_to post.user.name, show_profile_path(user: post.user.name)
-        td = post.created_at
-        td = post.updated_at
+        td = post.created_at.to_s(:datetime_jp)
+        td = post.updated_at.to_s(:datetime_jp)
         
