@@ -9,5 +9,7 @@ class ListsController < ApplicationController
 
   def show_profile
     @user = params[:user]
+    user_id = params[:id].to_i
+    @posts = Post.where(user_id: user_id)
   end
 end
