@@ -12,7 +12,7 @@ table.table.table-hover
     - @posts.each do |post|
       tr
         td = link_to  post.title, post
-        td = post.created_at
+        td = post.created_at.to_s(:datetime_jp)
         td = link_to '編集', edit_post_path(post), class: 'btn btn-primary mr-3'
         td = link_to '削除', post, method: :delete, class: 'btn btn-danger', data: { confirm: "タスク「#{post.title}」を削除しますか？"}
 
